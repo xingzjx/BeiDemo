@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Dimensions, Image, StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import RegisterPage from "./RegisterPage";
+import MainPage from "./MainPage";
 
 
 export default class LoginPage extends Component {
@@ -9,6 +10,13 @@ export default class LoginPage extends Component {
         const {navigator} = this.props;
         navigator.push({
             component: RegisterPage,
+        })
+    }
+
+    _login() {
+        const {navigator} = this.props;
+        navigator.push({
+            component: MainPage,
         })
     }
 
@@ -70,7 +78,7 @@ export default class LoginPage extends Component {
                         justifyContent: 'center',
                         marginTop: 20,
                     }}>
-                        <TouchableOpacity
+                        <TouchableOpacity onPress={this._login.bind(this)}
                             style={styles.button}>
                             <Text
                                 style={styles.btText}>登入</Text>
