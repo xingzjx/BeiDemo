@@ -1,14 +1,20 @@
 import {Component} from "react";
-import {StyleSheet, Text, View} from "react-native";
+import {StyleSheet, Text, View, Platform} from "react-native";
 import React from "react";
+import theme from "./config/theme";
 
 export default class HomePage extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.welcome}>
-                    钱包
-                </Text>
+                <View style={styles.actionBar}>
+                    <Text style={{color: theme.actionBar.fontColor, fontSize: theme.actionBar.fontSize}}>钱包</Text>
+                    <Text style={{
+                        color: theme.actionBar.fontColor,
+                        fontSize: theme.actionBar.fontSize,
+                        // alignSelf: 'end'
+                    }}>钱包</Text>
+                </View>
             </View>
         )
     }
@@ -17,18 +23,17 @@ export default class HomePage extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
+        // justifyContent: 'center',
+        // alignItems: 'center',
+        backgroundColor: '#F5F5F5',
+    },
+    actionBar: {
+        flexDirection: 'row',
+        height: theme.actionBar.height,
+        backgroundColor: theme.actionBar.backgroundColor,
         alignItems: 'center',
-        backgroundColor: '#F5FCFF',
+        justifyContent: 'center',
+        paddingTop: (Platform.OS === 'ios') ? 20 : 0,
     },
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10,
-    },
-    instructions: {
-        textAlign: 'center',
-        color: '#333333',
-        marginBottom: 5,
-    },
+
 });
