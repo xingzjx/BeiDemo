@@ -5,47 +5,14 @@
  */
 
 import React, {Component} from 'react';
-import {
-    AppRegistry,
-    StyleSheet,
-    Text,
-    View
-} from 'react-native';
+import {Image, StyleSheet} from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
-import Icon from 'react-native-vector-icons/FontAwesome'
-import {Dimensions} from 'react-native'
+import HomePage from "./HomePage";
+import ProfilePage from "./ProfilePage";
+import ShopPage from "./ShopPage";
+import SocialPage from "./SocialPage";
+import TradePage from "./TradePage";
 
-const deviceW = Dimensions.get('window').width
-
-const basePx = 375
-
-function px2dp(px) {
-    return px * deviceW / basePx
-}
-
-class Home extends Component {
-    render() {
-        return (
-            <View style={styles.container}>
-                <Text style={styles.welcome}>
-                    Home
-                </Text>
-            </View>
-        )
-    }
-}
-
-class Profile extends Component {
-    render() {
-        return (
-            <View style={styles.container}>
-                <Text style={styles.welcome}>
-                    Profile
-                </Text>
-            </View>
-        )
-    }
-}
 
 export default class MainPage extends Component {
     state = {
@@ -57,22 +24,58 @@ export default class MainPage extends Component {
             <TabNavigator style={styles.container}>
                 <TabNavigator.Item
                     selected={this.state.selectedTab === 'home'}
-                    title="Home"
+                    title="钱包"
                     selectedTitleStyle={{color: "#3496f0"}}
-                    renderIcon={() => <Icon name="home" size={px2dp(22)} color="#666"/>}
-                    renderSelectedIcon={() => <Icon name="home" size={px2dp(22)} color="#3496f0"/>}
-                    badgeText="1"
+                    renderIcon={() => <Image source={require('./image/home_wallet_hollow.png')}
+                                             style={{width: 25, height: 25}}/>}
+                    renderSelectedIcon={() => <Image source={require('./image/home_wallet_solid.png')}
+                                                     style={{width: 25, height: 25}}/>}
                     onPress={() => this.setState({selectedTab: 'home'})}>
-                    <Home/>
+                    <HomePage/>
+                </TabNavigator.Item>
+                <TabNavigator.Item
+                    selected={this.state.selectedTab === 'shop'}
+                    title="商城"
+                    selectedTitleStyle={{color: "#3496f0"}}
+                    renderIcon={() => <Image source={require('./image/home_store_hollow.png')}
+                                             style={{width: 25, height: 25}}/>}
+                    renderSelectedIcon={() => <Image source={require('./image/home_store_solid.png')}
+                                                     style={{width: 25, height: 25}}/>}
+                    onPress={() => this.setState({selectedTab: 'shop'})}>
+                    <ShopPage/>
+                </TabNavigator.Item>
+                <TabNavigator.Item
+                    selected={this.state.selectedTab === 'trade'}
+                    title="交易"
+                    selectedTitleStyle={{color: "#3496f0"}}
+                    renderIcon={() => <Image source={require('./image/home_transfer_hollow.png')}
+                                             style={{width: 25, height: 25}}/>}
+                    renderSelectedIcon={() => <Image source={require('./image/home_transfer_solid.png')}
+                                                     style={{width: 25, height: 25}}/>}
+                    onPress={() => this.setState({selectedTab: 'trade'})}>
+                    <TradePage/>
+                </TabNavigator.Item>
+                <TabNavigator.Item
+                    selected={this.state.selectedTab === 'social'}
+                    title="社交"
+                    selectedTitleStyle={{color: "#3496f0"}}
+                    renderIcon={() => <Image source={require('./image/home_msg_hollow.png')}
+                                             style={{width: 25, height: 25}}/>}
+                    renderSelectedIcon={() => <Image source={require('./image/home_msg_solid.png')}
+                                                     style={{width: 25, height: 25}}/>}
+                    onPress={() => this.setState({selectedTab: 'social'})}>
+                    <SocialPage/>
                 </TabNavigator.Item>
                 <TabNavigator.Item
                     selected={this.state.selectedTab === 'profile'}
-                    title="Profile"
+                    title="我"
                     selectedTitleStyle={{color: "#3496f0"}}
-                    renderIcon={() => <Icon name="user" size={px2dp(22)} color="#666"/>}
-                    renderSelectedIcon={() => <Icon name="user" size={px2dp(22)} color="#3496f0"/>}
+                    renderIcon={() => <Image source={require('./image/home_me_hollow.png')}
+                                             style={{width: 25, height: 25}}/>}
+                    renderSelectedIcon={() => <Image source={require('./image/home_me_solid.png')}
+                                                     style={{width: 25, height: 25}}/>}
                     onPress={() => this.setState({selectedTab: 'profile'})}>
-                    <Profile/>
+                    <ProfilePage/>
                 </TabNavigator.Item>
             </TabNavigator>
         );
@@ -97,5 +100,3 @@ const styles = StyleSheet.create({
         marginBottom: 5,
     },
 });
-
-//AppRegistry.registerComponent('TabDemo', () => TabDemo);
