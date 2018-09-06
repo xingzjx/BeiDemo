@@ -8,7 +8,6 @@ import React, {Component} from 'react';
 import {AppRegistry} from 'react-native';
 import LoginPage from "./js/LoginPage";
 import {Navigator} from 'react-native-deprecated-custom-components';
-import SampleAppMovies from "./js/MyTest";
 
 export default class BeiDemo extends Component {
     render() {
@@ -31,4 +30,4 @@ export default class BeiDemo extends Component {
     }
 }
 
-AppRegistry.registerComponent('BeiDemo', () => SampleAppMovies);
+AppRegistry.registerComponent('BeiDemo', () => BeiDemo);
